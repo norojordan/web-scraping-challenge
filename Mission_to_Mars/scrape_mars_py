@@ -72,10 +72,37 @@ def scrape():
     hemi_html = browser.html
     soup = bs(hemi_html, "html.parser")
 
+    image = soup.find_all("div", class_="description")
 
 
 
+    img_urls_list = []
 
+    # loop through image data to find title and url info
+    for i in image:
+    
+        title = i.find("h3").text
+        img_url = i.find('a')['href']
+   
+        each_url = 'https://marshemispheres.com/' + img_url
+    
+         # use requests to get full images for each url 
+        response = requests.get(each_url)
+    
+        # create soup object
+        soup = bs(response.text,"html.parser")
+    
+        # find full image url
+        new_url = soup.find("img", class_="wide-image")["src"]
+    
+        # create full image url
+        full_url = 'https://marshemispheres.com/'+ new_url
+    
+        #make a dict and append to the list
+        img_urls_list.append({"title": title, "img_url": full_url}) 
+                        
+
+    img_urls_list    
 
 
 
@@ -85,7 +112,7 @@ def scrape():
         "paragraph" : news_p,
         "featured_image_url": featured_image_url,
         "html_table": facts_html,
-        "hemisphere_img_urls": 
+        "hemisphere_img_urls": img_urls_list
     }
 
     # close the browser after scraping
