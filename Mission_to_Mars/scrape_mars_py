@@ -73,3 +73,25 @@ def scrape():
     soup = bs(hemi_html, "html.parser")
 
 
+
+
+
+
+
+
+    # create mars data dictionary to hold data
+    mars_data = {
+        "news_title": news_title,
+        "paragraph" : news_p,
+        "featured_image_url": featured_image_url,
+        "html_table": facts_html,
+        "hemisphere_img_urls": 
+    }
+
+    # close the browser after scraping
+    browser.quit()
+
+    # return results
+    return mars_data
+
+
