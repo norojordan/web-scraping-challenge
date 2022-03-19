@@ -6,18 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 
 <body>
+  <!-- display title and scrape button-->
   <div class="container">
-
+  
     <div class="jumbotron text-center">
-      <!-- Render our data -->
-      <h1>{{ text }}</h1>
+      <h1>{{text}}</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+  
+  <!--display the latest news and the image for mars-->
+  <div class="container">
+    <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+        <h4>{{mars_data.news_title}}</h4>
+        <p>{{mars_data.news_p}}</p>
     </div>
 
-  </div>
+  
 </body>
 
 </html>

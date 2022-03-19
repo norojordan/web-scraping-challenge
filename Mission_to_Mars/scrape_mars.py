@@ -100,10 +100,7 @@ def scrape():
     
         #make a dict and append to the list
         img_urls_list.append({"title": title, "img_url": full_url}) 
-                        
-
-    img_urls_list    
-
+                          
 
 
     # create mars data dictionary to hold data
