@@ -26,7 +26,31 @@
         <p>{{mars_data.news_p}}</p>
     </div>
 
-  
-</body>
+    <div class="col-md-8">
+      <h2>Featured Mars Image</h2>
+      <img src="{{mars_data.featured_image_url | default('static/images/error.png', true) }}"
+      class="img-responsive"
+      alt="Responsive image"/>
 
+      <div class = "table">
+        <h3>Mars Facts</h3>
+        <p>{{mars_data.html_table |safe}}</p>
+      </div>
+  </div>
+
+  <!-- display the hemisphere images and titles-->
+  <div class = "container">
+    <h3 align ="center">Mars Hemispheres</h3>
+      <div class = "card">
+        {% for image in mars_data.hemisphere_img_urls %}
+        <div class = "col-md-6">
+          <img class = "thumbnail" src = {{image.img_url}}>
+          <div class="card-body">
+            <h4 class = "card-title">{{image.title}}</h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+  </div> 
+</body>
 </html>

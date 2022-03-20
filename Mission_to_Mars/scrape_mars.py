@@ -4,10 +4,12 @@ from bs4 import BeautifulSoup as bs
 import requests
 import pandas as pd
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+import time
 
 
 def init_browser():
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
+    executable_path = {"executable_path": ChromeDriverManager().install()}
     return Browser("chrome", **executable_path, headless=False)
 
 # create scrape function
@@ -20,10 +22,9 @@ def scrape():
     browser.visit(url)
 
     # create BeautifulSoup object; parse with 'html.parser'
-
+    time.sleep(1)
     html = browser.html
-    soup = bs(html, 'html.parser')
-
+    soup = bs(html, 'lxml')
     #Get the latest news
     news_title = soup.find('div',class_='content_title').text
     news_p = soup.find('div', class_='article_teaser_body').text
@@ -45,6 +46,7 @@ def scrape():
     browser.visit(facts_url)
 
     # create BeautifulSoup object; parse with 'html.parser'
+    time.sleep(1)
     facts_html = browser.html   
     soup = bs(facts_html, "html.parser")
 
@@ -69,6 +71,7 @@ def scrape():
     browser.visit(hemisphere_url)
 
     # create BeautifulSoup object; parse with 'html.parser'
+    time.sleep(1)
     hemi_html = browser.html
     soup = bs(hemi_html, "html.parser")
 
@@ -117,5 +120,3 @@ def scrape():
 
     # return results
     return mars_data
-
-
