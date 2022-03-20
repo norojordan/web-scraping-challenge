@@ -111,7 +111,7 @@ def scrape():
         "news_title": news_title,
         "paragraph" : news_p,
         "featured_image_url": featured_image_url,
-        "html_table": facts_html,
+        "html_table": html_table,
         "hemisphere_img_urls": img_urls_list
     }
 
