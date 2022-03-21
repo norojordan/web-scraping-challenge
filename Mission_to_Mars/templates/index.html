@@ -11,12 +11,13 @@
 
 <body>
   <!-- display title and scrape button-->
-  <div class="container">
+  <div class="container" style="padding-top: 30px;">
   
     <div class="jumbotron text-center">
       <h1>{{text}}</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
+  </div>  
   
   <!--display the latest news and the image for mars-->
   <div class="container">
@@ -24,34 +25,38 @@
         <h2>Latest Mars News</h2>
         <h4>{{mars_data.news_title}}</h4>
         <p>{{mars_data.news_p}}</p>
-    </div>
+    </div> 
   
-  <div class = "row">
-    <div class="col-md-8 col-sm-12">
-      <h2>Featured Mars Image</h2>
-      <img src="{{mars_data.featured_image_url | default('static/images/error.png', true) }}"
-      width = "500" height = "500" class="img-responsive" style="display:inline-block;"
-      alt="Responsive image"/>
-    </div>
+    <div class = "row">
+     <div class="col-md-6 col-sm-12">
+       <h2>Featured Mars Image</h2>
+        <img src="{{mars_data.featured_image_url | default('static/images/error.png', true) }}"
+        width = "500" height = "500" class="img-responsive" 
+        alt="Responsive image"/>
+     </div>
 
-    <div class = "col-md-4 col-sm-12">  
-      <div class = "table">
-        <h3>Mars Facts</h3>
-        <p>{{mars_data.html_table |safe}}</p>
+     <div class = "col-md-6 col-sm-12">  
+       <div class = "table">
+         <h3>Mars Facts</h3>
+         <p>{{mars_data.html_table |safe}}</p>
+        </div>
       </div>
-    </div>
-  </div>  
+   </div>  
+
 
   <!-- display the hemisphere images and titles-->
   <div class = "container">
-    <h3 align ="center">Mars Hemispheres</h3>
-      <div class = "card">
+    <h3 class ="text-center" style="padding-top: 30px;">Mars Hemispheres</h3>
+    <hr>
+      <div class = "row" >
         {% for image in mars_data.hemisphere_img_urls %}
-        <div class = "col-md-6">
-          <img class = "thumbnail" src = "{{image.img_url}}" width = "40%" style="display:inline-block;"/>
-          <div class="card-body">
-            <h4 class = "card-title">{{image.title}}</h4>
-          </div>
+        <div class = "col-sm-3">
+          <div class ="card">
+            <img class = "thumbnail" src = "{{image.img_url}}" width = "100%" style="display:inline-block;"/>
+            <div class="card-body">
+              <h4 class = "card-title">{{image.title}}</h4>
+            </div>
+          </div>  
         </div>
         {% endfor %}
       </div>

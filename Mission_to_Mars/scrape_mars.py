@@ -57,10 +57,9 @@ def scrape():
     mars_facts_df = table[0]
 
     #Clean dataframs
-    mars_facts_df.columns =['Mars','Facts','Earth']
-    del mars_facts_df['Earth']
+    mars_facts_df.columns =['Facts','Mars','Earth']
     mars_facts_df = mars_facts_df.drop(mars_facts_df.index[:1])
-    mars_facts_df.set_index('Mars', inplace=True)
+    mars_facts_df.set_index('Facts', inplace=True)
 
     # convert the data to an HTML table string
     html_table = mars_facts_df.to_html()
@@ -109,7 +108,7 @@ def scrape():
     # create mars data dictionary to hold data
     mars_data = {
         "news_title": news_title,
-        "paragraph" : news_p,
+        "news_p" : news_p,
         "featured_image_url": featured_image_url,
         "html_table": html_table,
         "hemisphere_img_urls": img_urls_list
